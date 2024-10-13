@@ -1,88 +1,93 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
-// const LoginForm = () => {
-//   const [input, setInput] = useState({
-//     name: '',
-//     email: '',
-//     password: '',
-//   });
+const LoginForm = () => {
+  const [input, setInput] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
 
-//   const [data, setData] = useState([]); // Store submitted data
+  const [data, setData] = useState([]); // Store submitted data
 
-//   // Handle input changes
-//   function changeHandle(e) {
-//     setInput({ ...input, [e.target.name]: e.target.value });
-//   }
+  // Handle input changes
+  function changeHandle(e) {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  }
 
-//   // Handle form submission
-//   function handleSubmit(e) {
-//     e.preventDefault(); // Prevent page reload on submit
-//     setData([...data, input]); // Add new entry to data list
-//     setInput({ name: '', email: '', password: '' }); // Reset form fields
-//   }
+  // Handle form submission
+  function handleSubmit(e) {
+    e.preventDefault(); // Prevent page reload on submit
+    setData([...data, input]); // Add new entry to data list
+    setInput({ name: '', email: '', password: '' }); // Reset form fields
+  }
 
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <label>
-//           Name:
-//           <input
-//             type="text"
-//             name="name"
-//             value={input.name}
-//             onChange={changeHandle}
-//           />
-//         </label>
-//         <br /><br />
-//         <label>
-//           Email:
-//           <input
-//             type="email"
-//             name="email"
-//             value={input.email}
-//             onChange={changeHandle}
-//           />
-//         </label>
-//         <br /><br />
-//         <label>
-//           Password:
-//           <input
-//             type="password"
-//             name="password"
-//             value={input.password}
-//             onChange={changeHandle}
-//           />
-//         </label>
-//         <br /><br />
-//         <button type="submit">Submit</button>
-//       </form>
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={input.name}
+            onChange={changeHandle}
+          />
+        </label>
+        <br /><br />
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={input.email}
+            onChange={changeHandle}
+          />
+        </label>
+        <br /><br />
+        <label>
+          Password:
+          <input
+            type="password"
+            name="password"
+            value={input.password}
+            onChange={changeHandle}
+          />
+        </label>
+        <br /><br />
+        <button type="submit">Submit</button>
+      </form>
 
-//       {/* Display data in a table */}
-//       {data.length > 0 && (
-//         <table border="1" style={{ marginTop: '20px' }}>
-//           <thead>
-//             <tr>
-//               <th>Name</th>
-//               <th>Email</th>
-//               <th>Password</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {data.map((entry, index) => (
-//               <tr key={index}>
-//                 <td>{entry.name}</td>
-//                 <td>{entry.email}</td>
-//                 <td>{entry.password}</td>
-//               </tr>
-//             ))}
-//           </tbody>
-//         </table>
-//       )}
-//     </div>
-//   );
-// };
+      {/* Display data in a table */}
+      {data.length > 0 && (
+        <table border="1" style={{ marginTop: '20px' }}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((entry, index) => (
+              <tr key={index}>
+                <td>{entry.name}</td>
+                <td>{entry.email}</td>
+                <td>{entry.password}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
+};
 
-// export default LoginForm;
+export default LoginForm;
+
+
+
+
+
 
 
 // 2nd mathod with validation
