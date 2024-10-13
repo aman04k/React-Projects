@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form action="#">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+        <br><br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        <br><br>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <br><br>
+        <label for="file">Upload Image</label>
+        <input type="file" name="file" id="file" accept="image/*" required>
+        <br><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+    const form = document.querySelector('form');
+    const table = document.querySelector('table tbody');
+    
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const username = document.querySelector('#username').value;
+        const password = document.querySelector('#password').value;
+        const email = document.querySelector('#email').value;
+        const fileInput = document.querySelector('#file');
+        const file = fileInput.files[0];
+
+        const row = table.insertRow();
+        const usernameCell = row.insertCell();
+        const passwordCell = row.insertCell();
+        const emailCell = row.insertCell();
+        const imageCell = row.insertCell();
+
+        // Set the cell values for username, password, and email
+        usernameCell.textContent = username;
+        passwordCell.textContent = password;
+        emailCell.textContent = email;
+
+        // Display image if file is selected
+        if (file) {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            img.width = 100;  // Set the image width
+            img.height = 100; // Set the image height
+            imageCell.appendChild(img);
+        }
+
+        // Clear form after submission
+        form.reset();
+    });
+    </script>
+</body>
+</html>
