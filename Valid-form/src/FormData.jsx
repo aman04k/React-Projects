@@ -9,6 +9,7 @@ function FormData() {
   });
 
   const [users, setUsers] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false); // New state to track if form has been submitted
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -28,10 +29,8 @@ function FormData() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setUsers([
-      ...users,
-      formData,
-    ]);
+    setUsers([...users, formData]); // Add form data to the users array
+    setIsSubmitted(true); // Set the form as submitted to display the table
 
     // Reset the form after submission
     setFormData({
@@ -93,35 +92,38 @@ function FormData() {
         <button type="submit">Login</button>
       </form>
 
-      <table border="1" style={{ marginTop: '20px' }}>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Email</th>
-            <th>Image</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr key={index}>
-              <td>{user.username}</td>
-              <td>{user.password}</td>
-              <td>{user.email}</td>
-              <td>
-                {user.file && (
-                  <img
-                    src={URL.createObjectURL(user.file)}
-                    alt="Uploaded"
-                    width="100"
-                    height="100"
-                  />
-                )}
-              </td>
+      {/* Conditionally render the table only if the form has been submitted */}
+      {isSubmitted && (
+        <table border="1" style={{ marginTop: '20px' }}>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Email</th>
+              <th>Image</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <tr key={index}>
+                <td>{user.username}</td>
+                <td>{user.password}</td>
+                <td>{user.email}</td>
+                <td>
+                  {user.file && (
+                    <img
+                      src={URL.createObjectURL(user.file)}
+                      alt="Uploaded"
+                      width="100"
+                      height="100"
+                    />
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
