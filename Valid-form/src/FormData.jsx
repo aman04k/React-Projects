@@ -9,7 +9,7 @@ function FormData() {
   });
 
   const [users, setUsers] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false); // New state to track if form has been submitted
+  const [isSubmitted, setIsSubmitted] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -29,10 +29,9 @@ function FormData() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setUsers([...users, formData]); // Add form data to the users array
-    setIsSubmitted(true); // Set the form as submitted to display the table
+    setUsers([...users, formData]); 
+    setIsSubmitted(true); 
 
-    // Reset the form after submission
     setFormData({
       username: '',
       password: '',
@@ -92,7 +91,7 @@ function FormData() {
         <button type="submit">Login</button>
       </form>
 
-      {/* Conditionally render the table only if the form has been submitted */}
+      
       {isSubmitted && (
         <table border="1" style={{ marginTop: '20px' }}>
           <thead>
